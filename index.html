@@ -149,7 +149,7 @@ details.q p{color:var(--muted);margin:12px 0 0;max-width:640px;font-size:15.5px}
 footer{padding:60px 0 56px;color:var(--dim);font-size:13px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 footer a{color:var(--muted)}
 
-.songhead,.song{display:grid;grid-template-columns:minmax(120px,1.15fr) minmax(110px,1.2fr) minmax(120px,1.3fr) 76px auto;gap:14px;align-items:center;padding:17px 24px}
+.songhead,.song{display:grid;grid-template-columns:minmax(120px,1.15fr) minmax(110px,1.2fr) minmax(120px,1.3fr) 76px 352px;gap:14px;align-items:center;padding:17px 24px}
 .songhead{padding:13px 24px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);border-bottom:1px solid var(--line)}
 .songhead span:nth-child(4){text-align:right}.songhead span:nth-child(5){text-align:right}
 .song b{font-size:19px;font-weight:700;letter-spacing:-.015em;color:#fff;line-height:1.2}
@@ -160,6 +160,16 @@ footer a{color:var(--muted)}
 .oth .pl{display:block;transition:transform .15s}.oth[open] .pl{transform:rotate(45deg)}
 .win{max-width:1040px}
 .win-note{line-height:1.55}
+@media(max-width:1060px){
+  .songhead{display:none}
+  .song{grid-template-columns:1fr auto;gap:4px 12px;padding:14px 18px}
+  .song .by{grid-column:1}
+  .song .role{grid-column:1;grid-row:3;margin-top:4px}
+  .song .num{grid-column:2;grid-row:1}
+  .song .plat{grid-column:1/-1;grid-row:4;margin-top:8px;justify-self:start;flex-wrap:wrap}
+  .song b{font-size:18px}
+  .menu{left:0;right:auto}
+}
 @media(max-width:1000px){.steps{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:900px){
   .links{display:none}
@@ -355,6 +365,8 @@ footer a{color:var(--muted)}
     <details class="q"><summary>Do I own my song?</summary><p>Yes. For mixing and mastering I keep nothing of your record. For a custom production, release rights, credit and any splits are agreed in writing before I start.</p></details>
     <details class="q"><summary>What can I do with a beat license?</summary><p>A non-exclusive license lets you release the beat on streaming and social, credit “Prod. Wolf”, and keep what you earn. I can license the same beat to others until someone buys it exclusively, and earlier licenses stay valid. You can’t resell the beat itself. Want it only for you? Ask about an exclusive.</p></details>
     <details class="q"><summary>Are revisions included?</summary><p>Yes. Revisions are included.</p></details>
+    <details class="q"><summary>How do I pay?</summary><p>By invoice. Half to book your slot and half before I send the final files. Beat licenses are paid in full before the files go out.</p></details>
+    <details class="q"><summary>How long does it take?</summary><p>I confirm a delivery date before you book, once I’ve heard the files. Rush delivery is available for an extra fee.</p></details>
     <details class="q"><summary>Do you work in every genre?</summary><p>Yes. Send me what you’re making and I’ll tell you honestly if it’s a fit.</p></details>
     <details class="q"><summary>What do I send for a mix?</summary><p>A stereo instrumental and your vocal files, or full stems, all starting at the same point, plus a rough mix and a note on what you like and don’t.</p></details>
     <details class="q"><summary>Do you use AI to make the music?</summary><p>No. The music is yours, or it’s made by me.</p></details>
