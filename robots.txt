@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://benwolf21.github.io/wolf-mixing/sitemap.xml
