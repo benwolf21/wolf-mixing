@@ -89,7 +89,8 @@ h1{font-size:clamp(40px,7vw,76px);line-height:1.04;letter-spacing:-.035em;font-w
 .chips{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
 .chips li{border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-size:14px;font-weight:600;color:#d6d3e6;background:rgba(255,255,255,.02)}
 
-section{padding:110px 0 0}
+section{padding:110px 0 0;scroll-margin-top:30px}
+.win,.artists{scroll-margin-top:84px}
 .badge{width:46px;height:46px;border-radius:13px;background:var(--grad2);display:grid;place-items:center;margin-bottom:22px;box-shadow:0 0 30px rgba(244,114,182,.25)}
 .badge svg{width:22px;height:22px;fill:none;stroke:#16101f;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 h2{font-size:clamp(30px,4.6vw,46px);line-height:1.1;letter-spacing:-.03em;margin:0 0 12px;font-weight:600;color:#ddd8f5;max-width:660px}
@@ -174,7 +175,7 @@ footer a{color:var(--muted)}
   .hero{padding-top:48px}
   .row2{grid-template-columns:1fr}
 }
-@media(max-width:560px){.steps{grid-template-columns:1fr}.top .btn{display:none}}
+@media(max-width:560px){.steps{grid-template-columns:1fr}.top .btn.sm{padding:8px 14px;font-size:13px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
