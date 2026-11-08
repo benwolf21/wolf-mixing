@@ -134,6 +134,16 @@ h2{font-size:clamp(30px,4.6vw,46px);line-height:1.1;letter-spacing:-.03em;margin
 .beatc .chips2 span{font-size:12px;border:1px solid var(--line2);border-radius:999px;padding:4px 10px;color:#d6d3e6}
 .beatc .btn{margin-top:auto}
 @media(max-width:900px){.beatgrid{grid-template-columns:1fr}}
+.pcards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.quote{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:22px;display:flex;flex-direction:column;gap:14px}
+.quote p{margin:0;font-size:17px;line-height:1.5;color:#e7e4f3}
+.quote cite{font-style:normal;color:var(--muted);font-size:14px}
+.ab{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:20px;display:grid;gap:12px}
+.ab h3{margin:0;font-size:18px}
+.ab .row2a{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.ab label{display:grid;gap:6px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.ab audio{width:100%;height:40px;filter:invert(.92) hue-rotate(180deg)}
+@media(max-width:900px){.pcards{grid-template-columns:1fr}.ab .row2a{grid-template-columns:1fr}}
 .fine{color:var(--dim);font-size:13px;margin-top:16px}
 
 .steps{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
@@ -367,6 +377,20 @@ footer a{color:var(--muted)}
     <p class="fine">Every beat is non-exclusive until it is sold as an exclusive. WAV $50, WAV + stems $100, exclusive from $500.</p>
   </section>
 
+  <section id="examples" hidden>
+    <div class="badge"><svg viewBox="0 0 24 24"><path d="M3 12h2M7 7v10M11 4v16M15 8v8M19 11v2"/></svg></div>
+    <h2>Hear the <span class="g">difference.</span></h2>
+    <p class="lede">The same moment of the song, before and after.</p>
+    <div class="pcards" id="abgrid"></div>
+  </section>
+
+  <section id="proof" hidden>
+    <div class="badge"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></div>
+    <h2>What artists <span class="g">say.</span></h2>
+    <p class="lede">Shared with permission.</p>
+    <div class="pcards" id="quotegrid"></div>
+  </section>
+
   <section id="how">
     <div class="badge"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></div>
     <h2>How working together <span class="g">goes.</span></h2>
@@ -467,6 +491,19 @@ footer a{color:var(--muted)}
       });
     });
   };
+  window.renderExamples=function(list){
+    var sec=document.getElementById('examples'),g=document.getElementById('abgrid');
+    if(!Array.isArray(list)||!list.length){sec.hidden=true;return}
+    g.innerHTML=list.map(function(x){return '<div class="ab"><h3>'+esc(x.title)+'</h3><div class="row2a"><label>Before<audio controls preload="none" src="'+esc(x.before)+'"></audio></label><label>After<audio controls preload="none" src="'+esc(x.after)+'"></audio></label></div></div>'}).join('');
+    sec.hidden=false;
+  };
+  window.renderQuotes=function(list){
+    var sec=document.getElementById('proof'),g=document.getElementById('quotegrid');
+    if(!Array.isArray(list)||!list.length){sec.hidden=true;return}
+    g.innerHTML=list.map(function(q){return '<div class="quote"><p>“'+esc(q.quote)+'”</p><cite>'+esc(q.name)+(q.role?', '+esc(q.role):'')+'</cite></div>'}).join('');
+    sec.hidden=false;
+  };
+  ['examples','testimonials'].forEach(function(n){try{fetch(n+'.json?'+Date.now()).then(function(r){return r.ok?r.json():[]}).then(n==='examples'?window.renderExamples:window.renderQuotes).catch(function(){})}catch(e){}});
   try{fetch('beats.json?'+Date.now()).then(function(r){return r.ok?r.json():[]}).then(window.renderBeats).catch(function(){})}catch(e){}
   document.getElementById('startform').addEventListener('submit',function(e){
     e.preventDefault();
